@@ -5,6 +5,7 @@ const {
   getAllMessages,
   createMessage,
   deleteMessage,
+  updateMessage,
 } = require('../controllers/messageController');
 
 // GET all messages
@@ -15,5 +16,8 @@ router.post('/', createMessage);
 
 // DELETE a message
 router.delete('/:id', deleteMessage);
+
+// PUT (Update) a message
+router.put('/:id', updateMessage);
 
 module.exports = router;

@@ -33,12 +33,16 @@ function App() {
       <header className="App-header">
         <h1>Message Board</h1>
         <MessageForm onMessagePosted={fetchMessages} />
-        
+
         {isLoading && <p>Loading messages...</p>}
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-        
+
         {!isLoading && !error && (
-          <MessageList messages={messages} onMessageDeleted={fetchMessages} />
+          <MessageList
+            messages={messages}
+            onMessageDeleted={fetchMessages}
+            onMessageUpdated={fetchMessages}
+          />
         )}
       </header>
     </div>

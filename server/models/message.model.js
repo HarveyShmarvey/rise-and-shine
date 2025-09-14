@@ -10,6 +10,17 @@ const MessageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  // --- NEW ---
+  status: {
+    type: String,
+    enum: ['Normal', 'Important'], // Only allows these values
+    default: 'Normal',
+  },
+  // --- END NEW ---
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

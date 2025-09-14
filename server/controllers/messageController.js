@@ -33,8 +33,25 @@ const deleteMessage = async (req, res) => {
   }
 };
 
+// Update a message
+const updateMessage = async (req, res) => {
+  try {
+    const { text, status } = req.body;
+    const updatedMessage = await Message.findByIdAndUpdate(
+      req.params.id,
+      { text, status },
+      { new: true, runValidators: true } // Options: return the new version, run schema validators
+    );
+    if (!updatedMessage) return res.status(404).json({ message: 'Message not found' });
+    res.json(updatedMessage);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   getAllMessages,
   createMessage,
   deleteMessage,
+  updateMessage,
 };
